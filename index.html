@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joseph Dominion Chukwuemerie | Full-Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Hero with cover photo only (no red gradient) */
+    .hero {
+      position: relative;
+      color: white;
+      padding: 4rem 0 5rem;
+      text-align: center;
+      border-bottom: 4px solid #d4af37;
+      overflow: hidden;
+    }
+    /* Dark overlay for text readability */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .cover-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      z-index: -1;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #d4af37;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero h1 .chinese-name {
+      font-size: 1.8rem;
+      color: #d4af37;
+      display: inline-block;
+    }
+    .hero .tagline {
+      font-size: 1.2rem;
+      color: #f9e0a0;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .hero .location {
+      background: rgba(212, 175, 55, 0.2);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      color: #b91c1c;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: #d4af37;
+      border-radius: 3px;
+    }
+
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .about-text { flex: 2; }
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #2d2d2d;
+    }
+    .info-card {
+      flex: 1;
+      background: #fef9e6;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      border: 1px solid #f1e5c0;
+    }
+    .info-card h3 {
+      color: #b91c1c;
+      margin-bottom: 1rem;
+    }
+    .info-card ul { list-style: none; }
+    .info-card li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .info-card li strong {
+      width: 90px;
+      font-weight: 600;
+      color: #b47c00;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .skill-badge {
+      background: #fef0cf;
+      color: #b91c1c;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-weight: 500;
+      border: 1px solid #f1e0b5;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .fact-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid #f1e0b5;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .fact-card:hover {
+      transform: translateY(-4px);
+      border-color: #d4af37;
+      box-shadow: 0 10px 15px -3px rgba(212,175,55,0.1);
+    }
+    .fact-card h3 {
+      color: #b91c1c;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-area {
+      background: #fef9e6;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 1rem;
+      border: 1px solid #f1e0b5;
+    }
+    .contact-area a {
+      color: #b91c1c;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #d4af37;
+    }
+    .contact-area a:hover {
+      color: #d4af37;
+      border-bottom-color: #b91c1c;
+    }
+    .social-handle {
+      background: #b91c1c;
+      color: #fef0cf;
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    .website-link {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #d4af37;
+      color: #1e1e1e;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .website-link:hover {
+      background: #b91c1c;
+      color: white;
+    }
+
+    .footer {
+      background: #b91c1c;
+      color: #fef0cf;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero h1 .chinese-name { font-size: 1.2rem; display: block; margin-top: 0.3rem; }
+      .about-grid { flex-direction: column; }
+      .profile-pic { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <!-- COVER PHOTO: Replace with your uploaded cover image path -->
+    <img class="cover-image" src="file:///Users/dominionworshipz/Downloads/J%20C.png" alt="Cover photo">
+    <div class="container">
+      <!-- PROFILE PICTURE: Replace with your uploaded profile image path -->
+      <img class="profile-pic" src="file:///Users/dominionworshipz/Desktop/me1.jpg" alt="Joseph Dominion Chukwuemerie">
+      <h1>
+        Joseph Dominion Chukwuemerie 
+        <span class="chinese-name">(统治权)</span>
+      </h1>
+      <div class="tagline">Full‑Stack Web Developer | Problem Solver</div>
+      <div class="location">📍 Nigeria / China</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <h2 class="section-title">About me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I’m <strong>Joseph Dominion Chukwuemerie</strong> — a web developer who also goes by the Chinese name <strong>统治权</strong> . (我叫统治权，也可以叫我Dominion.)</p>
+          <p>I specialize in building clean, scalable web applications with a focus on both frontend finesse and backend reliability. My approach combines technical precision with creative problem‑solving — treating every project as a complete digital experience, not just code.</p>
+          <p>My name reflects my philosophy: full ownership of quality, performance, and user experience. Whether I’m architecting a robust system or crafting an interactive interface, I bring structure and purpose to every line of code.</p>
+          <p>You can find me across social media (Facebook, WhatsApp, Instagram, Threads, LinkedIn) as <strong>@dominionworshipz</strong>.</p>
+          <p>Explore my work: <a href="https://www.dominionworshipz.com" target="_blank" style="color:#b91c1c; font-weight:600;">www.dominionworshipz.com</a></p>
+        </div>
+        <div class="info-card">
+          <h3>📋 Personal details</h3>
+          <ul>
+            <li><strong>Born</strong> Oct 23, 2003</li>
+            <li><strong>From</strong> Nigeria</li>
+            <li><strong>Based</strong> China</li>
+            <li><strong>Chinese Name</strong> 统治权</li>
+            <li><strong>Role</strong> Full‑Stack Developer</li>
+            <li><strong>Study</strong> Computer Science / Software Engineering</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Tech stack</h2>
+      <div class="skills">
+        <span class="skill-badge">JavaScript (ES6+)</span>
+        <span class="skill-badge">TypeScript</span>
+        <span class="skill-badge">React</span>
+        <span class="skill-badge">Next.js</span>
+        <span class="skill-badge">Node.js</span>
+        <span class="skill-badge">Express</span>
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">Django</span>
+        <span class="skill-badge">Tailwind CSS</span>
+        <span class="skill-badge">MongoDB</span>
+        <span class="skill-badge">PostgreSQL</span>
+        <span class="skill-badge">Git & GitHub</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">✨ Interesting facts about web development</h2>
+      <div class="facts-grid">
+        <div class="fact-card"><h3>📜 The first website is still online</h3><p>The very first website, created by Tim Berners‑Lee in 1991, is still live at <a href="http://info.cern.ch" target="_blank">info.cern.ch</a>.</p></div>
+        <div class="fact-card"><h3>⚡ 0.5 seconds matters</h3><p>53% of mobile users leave a site if it takes longer than 3 seconds to load. A 0.5‑second improvement can boost conversions by 10%.</p></div>
+        <div class="fact-card"><h3>🎨 CSS is Turing complete</h3><p>CSS alone can be used to build logic, making it technically a programming language capable of computation.</p></div>
+        <div class="fact-card"><h3>📱 Mobile first is the standard</h3><p>More than 60% of global web traffic now comes from mobile devices.</p></div>
+        <div class="fact-card"><h3>🐞 "Debugging" has naval roots</h3><p>The term was popularized when a moth was removed from the Harvard Mark II computer in 1947.</p></div>
+        <div class="fact-card"><h3>🌐 JavaScript was built in 10 days</h3><p>Brendan Eich created the first version of JavaScript in just 10 days in 1995.</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">📬 Connect with me</h2>
+      <div class="contact-area">
+        <p>Let's connect! Find me everywhere as <strong>@dominionworshipz</strong>.</p>
+        <div class="social-handle">@dominionworshipz</div>
+        <p style="margin: 1rem 0;">📧 <a href="mailto:dominionworshipz@gmail.com">dominionworshipz@gmail.com</a></p>
+        <a href="https://www.dominionworshipz.com" target="_blank" class="website-link">🌐 Explore my work → www.dominionworshipz.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 Joseph Dominion Chukwuemerie (统治权) — Full‑Stack Developer | Built with ☕ and code</p>
+  </div>
+</body>
+</html>
